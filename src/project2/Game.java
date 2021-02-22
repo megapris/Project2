@@ -7,6 +7,9 @@ import java.util.GregorianCalendar;
 
 public class Game extends Rental {
 
+    /** a universal version identifier for a Serializable class */
+    private static final long serialVersionUID = 1L;
+    
     /** represents the name of the game */
     private String nameGame;
 

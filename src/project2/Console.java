@@ -5,6 +5,9 @@ import java.util.GregorianCalendar;
 
 public class Console extends Rental {
 
+    /** a universal version identifier for a Serializable class */
+    private static final long serialVersionUID = 1L;
+
     /** Represents the type of Console, see enum type. */
     private ConsoleTypes consoleType;
 

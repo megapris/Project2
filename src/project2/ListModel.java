@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 
 public class ListModel extends AbstractTableModel {
 
+    /** a universal version identifier for a Serializable class */
+    private static final long serialVersionUID = 1L;
+
     /**
      * holds all the rentals
      */
@@ -83,6 +86,14 @@ public class ListModel extends AbstractTableModel {
             case Cap14DaysOverdue:
                 // Your code goes here AND OTHER PLACES TOO
                 break;
+            case EveryThingScreen:
+                filteredListRentals = (ArrayList<Rental>) listOfRentals.stream()
+                //.filter(n -> n.actualDateReturned == null)
+                .collect(Collectors.toList());
+
+                // Note: This uses Lambda function
+                Collections.sort(filteredListRentals, (n1, n2) -> n1.nameOfRenter.compareTo(n2.nameOfRenter));
+                break;
 
             default:
                 throw new RuntimeException("upDate is in undefined state: " + display);
@@ -125,6 +136,8 @@ public class ListModel extends AbstractTableModel {
                 return columnNamesCurrentRentals[col];
             case DueWithinWeekGamesFirst:
                 return columnNamesCurrentRentals[col];
+            case EveryThingScreen:
+                return columnNamesCurrentRentals[col];
 
         }
         throw new RuntimeException("Undefined state for Col Names: " + display);
@@ -142,6 +155,8 @@ public class ListModel extends AbstractTableModel {
             case Cap14DaysOverdue:
                 return columnNamesCurrentRentals.length;
             case DueWithinWeekGamesFirst:
+                return columnNamesCurrentRentals.length;
+            case EveryThingScreen:
                 return columnNamesCurrentRentals.length;
 
 
@@ -167,6 +182,8 @@ public class ListModel extends AbstractTableModel {
             case Cap14DaysOverdue:
                 return currentRentScreen(row, col);
             case DueWithinWeekGamesFirst:
+                return currentRentScreen(row, col);
+            case EveryThingScreen:
                 return currentRentScreen(row, col);
 
 

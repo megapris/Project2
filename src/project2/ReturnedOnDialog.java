@@ -13,6 +13,9 @@ import java.util.GregorianCalendar;
 
 public class ReturnedOnDialog extends JDialog implements ActionListener {
 
+    /** a universal version identifier for a Serializable class */
+    private static final long serialVersionUID = 1L;
+
 	private JTextField txtDate;
 
 	private JButton okButton;

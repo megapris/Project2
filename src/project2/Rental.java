@@ -24,9 +24,8 @@ Rental implements Serializable {
     protected GregorianCalendar actualDateReturned;
 
     public Rental() {
-    }
 
-    public abstract double getCost(GregorianCalendar checkOut);
+    }
 
     public Rental(String nameOfRenter,
                   GregorianCalendar rentedOn,
@@ -37,6 +36,8 @@ Rental implements Serializable {
         this.dueBack = dueBack;
         this.actualDateReturned = actualDateReturned;
     }
+
+    public abstract double getCost(GregorianCalendar checkOut);
 
     public String getNameOfRenter() {
         return nameOfRenter;

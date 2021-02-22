@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
 public class GUIRentalStore extends JFrame implements ActionListener {
+
+    /** a universal version identifier for a Serializable class */
+    private static final long serialVersionUID = 1L;
+
     private JMenuBar menus;
 
     private JMenu fileMenu;
@@ -26,6 +30,7 @@ public class GUIRentalStore extends JFrame implements ActionListener {
     private JMenuItem withIn7ItemScn;
     private JMenuItem sort30DaysItemScn;
     private JMenuItem sortGameItemScn;
+    private JMenuItem EveryThingScreen;
 
     private JPanel panel;
 
@@ -53,6 +58,7 @@ public class GUIRentalStore extends JFrame implements ActionListener {
         withIn7ItemScn = new JMenuItem("Within 7 Days Screen");
         sortGameItemScn = new JMenuItem("Within 7 Days Games First Screen");
         sort30DaysItemScn = new JMenuItem("Cap all Rentals 14 days late Screen");
+        EveryThingScreen = new JMenuItem("EveryThing Screen");
 
         fileMenu.add(openSerItem);
         fileMenu.add(saveSerItem);
@@ -67,6 +73,7 @@ public class GUIRentalStore extends JFrame implements ActionListener {
         fileMenu.add(withIn7ItemScn);
         fileMenu.add (sortGameItemScn);
         fileMenu.add(sort30DaysItemScn);
+        fileMenu.add(EveryThingScreen);
         fileMenu.addSeparator();
 
         actionMenu.add(rentConsoleItem);
@@ -91,6 +98,7 @@ public class GUIRentalStore extends JFrame implements ActionListener {
         withIn7ItemScn.addActionListener(this);
         sortGameItemScn.addActionListener(this);
         sort30DaysItemScn.addActionListener(this);
+        EveryThingScreen.addActionListener(this);
 
         setJMenuBar(menus);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -126,6 +134,9 @@ public class GUIRentalStore extends JFrame implements ActionListener {
 
         if (sort30DaysItemScn == comp)
             dList.setDisplay(ScreenDisplay.Cap14DaysOverdue);
+
+        if (EveryThingScreen == comp)
+            dList.setDisplay(ScreenDisplay.EveryThingScreen);
 
         if (openSerItem == comp || openTextItem == comp) {
             JFileChooser chooser = new JFileChooser();

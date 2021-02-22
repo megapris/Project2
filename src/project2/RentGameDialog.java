@@ -11,6 +11,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class RentGameDialog extends JDialog implements ActionListener {
+
+    /** a universal version identifier for a Serializable class */
+    private static final long serialVersionUID = 1L;
+    
     private JTextField txtRentedName;
     private JTextField txtDateRentedOn;
     private JTextField txtDateDueDate;

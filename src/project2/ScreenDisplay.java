@@ -5,5 +5,6 @@ public enum ScreenDisplay {
     ReturnedItems,
     DueWithInWeek,
     DueWithinWeekGamesFirst,
-    Cap14DaysOverdue
+    Cap14DaysOverdue,
+    EveryThingScreen
 }
