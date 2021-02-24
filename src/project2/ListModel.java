@@ -33,8 +33,6 @@ public class ListModel extends AbstractTableModel {
             "Rented On", "Due Date ", "Console", "Name of the Game"};
     private String[] columnNamesReturned = {"Renter\'s Name", "Rented On Date",
             "Due Date", "Actual date returned ", "Est. Cost", " Real Cost"};
-    private String[] columnEverything = {"Renter\'s Name", "Rented On", "Due Date ",
-         "Actual Date returned", "Est. Cost", "Real Cost", "Console", "Name of the Game"};
 
     private DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -139,7 +137,7 @@ public class ListModel extends AbstractTableModel {
             case DueWithinWeekGamesFirst:
                 return columnNamesCurrentRentals[col];
             case EveryThingScreen:
-                return columnEverything[col];
+                return columnNamesCurrentRentals[col];
 
         }
         throw new RuntimeException("Undefined state for Col Names: " + display);
@@ -159,7 +157,7 @@ public class ListModel extends AbstractTableModel {
             case DueWithinWeekGamesFirst:
                 return columnNamesCurrentRentals.length;
             case EveryThingScreen:
-                return columnEverything.length;
+                return columnNamesCurrentRentals.length;
 
 
 
@@ -195,23 +193,23 @@ public class ListModel extends AbstractTableModel {
 
     private Object currentRentScreen(int row, int col) {
         switch (col) {
-            case 0:// Renter's Name
+            case 0:
                 return (filteredListRentals.get(row).nameOfRenter);
 
-            case 1: // Est Cost
+            case 1:
                 return (filteredListRentals.get(row).getCost(filteredListRentals.
                         get(row).dueBack));
 
-            case 2: // Rented On
+            case 2:
                 return (formatter.format(filteredListRentals.get(row).rentedOn.getTime()));
 
-            case 3: // Due Date
+            case 3:
                 if (filteredListRentals.get(row).dueBack == null)
                     return "-";
 
                 return (formatter.format(filteredListRentals.get(row).dueBack.getTime()));
 
-            case 4: // Console
+            case 4:
                 if (filteredListRentals.get(row) instanceof Console)
                     return (((Console) filteredListRentals.get(row)).getConsoleType());
                 else {
@@ -222,7 +220,7 @@ public class ListModel extends AbstractTableModel {
                             return "";
                 }
 
-            case 5: // Name of the Game
+            case 5:
                 if (filteredListRentals.get(row) instanceof Game)
                     return (((Game) filteredListRentals.get(row)).getNameGame());
                 else
@@ -234,36 +232,6 @@ public class ListModel extends AbstractTableModel {
 
 
     private Object rentedOutScreen(int row, int col) {
-        switch (col) {
-            case 0: // Renter's name
-                return (filteredListRentals.get(row).nameOfRenter);
-
-            case 1: // Rented on
-                return (formatter.format(filteredListRentals.get(row).rentedOn.
-                        getTime()));
-            case 2:
-                return (formatter.format(filteredListRentals.get(row).dueBack.
-                        getTime()));
-            case 3:
-                return (formatter.format(filteredListRentals.get(row).
-                        actualDateReturned.getTime()));
-
-            case 4:
-                return (filteredListRentals.
-                        get(row).getCost(filteredListRentals.get(row).dueBack));
-
-            case 5:
-                return (filteredListRentals.
-                        get(row).getCost(filteredListRentals.get(row).
-                        actualDateReturned
-                ));
-
-            default:
-                throw new RuntimeException("Row,col out of range: " + row + " " + col);
-        }
-    }
-
-    private Object EverythingScreen(int row, int col) {
         switch (col) {
             case 0:
                 return (filteredListRentals.get(row).nameOfRenter);
@@ -285,12 +253,8 @@ public class ListModel extends AbstractTableModel {
             case 5:
                 return (filteredListRentals.
                         get(row).getCost(filteredListRentals.get(row).
-                        actualDateReturned));
-            // case 6:
-            //     return (formatter.format(filteredListRentals.get(row)
-            //             .))
-            // case 7:
-            //     return
+                        actualDateReturned
+                ));
 
             default:
                 throw new RuntimeException("Row,col out of range: " + row + " " + col);
