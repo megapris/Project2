@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Console extends Rental {
 
-    // HIIIIIIIIIIIIIIIIIIIIIIIII DOES IT WORK?
+    // HELLO
     // 
     
     /** a universal version identifier for a Serializable class */
